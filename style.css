@@ -90,7 +90,7 @@ section::before {
     display: none; 
 }
 
-/* ================= OPENING COVER (CREAM & KUBAH) ================= */
+/* ================= OPENING COVER (CREAM & KUBAH) – DIPERBARUI AGAR RESPONSIF ================= */
 #opening-cover {
     position: fixed;
     inset: 0;
@@ -116,10 +116,14 @@ section::before {
     max-width: 600px;
 }
 
-/* BINGKAI FOTO KUBAH 2X3 */
+/* BINGKAI FOTO KUBAH – SEKARANG MENGGUNAKAN LEBAR RELATIF & JAGA RASIO */
 .opening-photo-frame {
-    width: 240px;
-    height: 360px;
+    /* Perubahan Utama untuk Responsif: */
+    width: 100%; /* Penuhi wadah induk up to... */
+    max-width: 240px; /* ...batas maksimum desktop */
+    aspect-ratio: 2 / 3; /* Jaga bentuk kubah tetap 2 banding 3 meskipun mengecil */
+    
+    /* Properti bingkai lainnya tetap sama */
     margin: 30px auto;
     border-radius: 120px 120px 0 0;
     overflow: hidden;
@@ -131,7 +135,7 @@ section::before {
 .opening-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Jaga agar foto di dalam penuhi wadah tanpa gepeng */
 }
 
 .opening-content h4 {
@@ -299,10 +303,14 @@ section::before {
     opacity: 0.9;
 }
 
-/* FOTO MEMPELAI (BULAT) */
+/* FOTO MEMPELAI (BULAT) – SEKARANG MENGGUNAKAN LEBAR RELATIF & JAGA RASIO SQUARE */
 .person-photo {
-    width: 160px;
-    height: 160px;
+    /* Perubahan Utama untuk Responsif: */
+    width: 100%; /* Penuhi wadah induk up to... */
+    max-width: 160px; /* ...batas maksimum desktop */
+    aspect-ratio: 1 / 1; /* Jaga agar bingkai tetap persegi (penting untuk border-radius 50%) */
+    
+    /* Properti bingkai lainnya tetap sama */
     margin: 0 auto 20px;
     border-radius: 50%;
     overflow: hidden;
@@ -314,7 +322,7 @@ section::before {
 .person-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Jaga foto penuhi wadah tanpa gepeng */
 }
 
 /* ================= STORY ================= */
@@ -613,7 +621,7 @@ footer {
     100% { transform: scale(1.6); opacity: 0; }
 }
 
-/* ================= RESPONSIVE / MOBILE FIXES ================= */
+/* ================= RESPONSIVE / MOBILE FIXES (SANGAT PENTING) – DIPERBARUI ================= */
 @media (max-width: 768px) {
     section { padding: 70px 20px; }
     h1 { font-size: 2rem; line-height: 1.3; }
@@ -629,7 +637,15 @@ footer {
     
     section::before { display: none; }
 
-    .opening-photo-frame { width: 180px; height: 270px; margin: 20px auto; border-width: 6px; }
+    /* PENYUSUTAN FOTO DI MOBILE – JANGAN GUNAKAN PIKSEL KAKU */
+    .opening-photo-frame { 
+        /* Ganti width/height kaku menjadi max-width yang lebih kecil di HP */
+        max-width: 180px; 
+        /* Aspect-ratio sudah didefinisikan secara global, akan menyesuaikan tinggi secara otomatis */
+        margin: 20px auto; 
+        border-width: 6px; 
+    }
+    
     .opening-content h1 { font-size: 2rem; }
     .opening-content h4 { font-size: 0.8rem; letter-spacing: 3px; }
     .opening-content button { padding: 12px 26px; font-size: 13px; }
@@ -648,7 +664,12 @@ footer {
     .couple-container { flex-direction: column; gap: 20px; margin-top: 30px; }
     .amp { font-size: 2.2rem; }
     .person h3 { font-size: 1.2rem; }
-    .person-photo { width: 130px; height: 130px; }
+    
+    /* Ganti width/height kaku menjadi max-width yang lebih kecil di HP */
+    .person-photo { 
+        max-width: 130px; 
+    }
+    
     .person { padding: 20px; }
 
     .event-card { padding: 30px 20px; margin: 20px auto; }
