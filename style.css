@@ -1,0 +1,674 @@
+/* ================= RESET & GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7ede2; /* Cream sedikit lebih dalam agar motif bunga terlihat jelas */
+    
+    /* PATTERN BUNGA MEWAH DARI INTERNET */
+    background-image: url('https://www.transparenttextures.com/patterns/roses.png');
+    background-attachment: fixed; /* Motif diam saat discroll */
+    
+    color: #4a3e36; /* COKELAT TUA LEMBUT */
+    overflow-x: hidden;
+}
+
+/* ================= TYPOGRAPHY (PREMIUM CREAM) ================= */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(45deg, #b59063, #e8c691, #c5a278); /* GOLD PREMIUM LEMBUT */
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h4 {
+    font-family: 'Poppins', sans-serif;
+    color: #8c7a6b;
+}
+
+/* ================= DEKORASI BUNGA GLOBAL (SISI BEDA-BEDA FILE LOKAL) ================= */
+.floral-frame-decor {
+    position: fixed;
+    width: 250px; /* Ukuran wadah bunga sudut */
+    height: 250px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 9999; /* Z-index besar agar selalu di depan bingkai konten */
+}
+
+/* Memanggil file Anda masing-masing di setiap sudut dengan posisi 0 & background-position agar menempel presisi */
+.floral-top-left {
+    top: 0; 
+    left: 0;
+    background-image: url('bunga-kiri-atas.png'); 
+    background-position: top left;
+}
+
+.floral-top-right {
+    top: 0;
+    right: 0;
+    background-image: url('bunga-kanan-atas.png'); 
+    background-position: top right;
+}
+
+.floral-bottom-left {
+    bottom: 0;
+    left: 0;
+    background-image: url('bunga-kiri-bawah.png'); 
+    background-position: bottom left;
+}
+
+.floral-bottom-right {
+    bottom: 0;
+    right: 0;
+    background-image: url('bunga-kanan-bawah.png'); 
+    background-position: bottom right;
+}
+
+/* ================= SECTION ================= */
+section {
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* DEKORASI BUNGA KECIL DI SUDUT SETIAP SECTION (DISEMBUNYIKAN AGAR LEBIH FOKUS) */
+section::before {
+    display: none; 
+}
+
+/* HILANGKAN BUNGA KECIL PADA HERO, PARALLAX, & FOOTER AGAR RAPI */
+.hero::before, .parallax-section::before, footer::before { 
+    display: none; 
+}
+
+/* ================= OPENING COVER (CREAM & KUBAH) ================= */
+#opening-cover {
+    position: fixed;
+    inset: 0;
+    z-index: 10000; /* Dibuat lebih besar dari bunga agar menutupi sempurna saat awal */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1.5s cubic-bezier(.77,0,.18,1);
+    background: radial-gradient(circle at 50% 50%, rgba(253,250,245,0.95) 0%, rgba(247,241,231,0.95) 60%, rgba(232,221,205,0.95) 100%), url('https://www.transparenttextures.com/patterns/roses.png');
+    background-attachment: fixed;
+    opacity: 1;
+    visibility: visible;
+}
+
+.opening-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #4a3e36;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* BINGKAI FOTO KUBAH 2X3 */
+.opening-photo-frame {
+    width: 240px;
+    height: 360px;
+    margin: 30px auto;
+    border-radius: 120px 120px 0 0;
+    overflow: hidden;
+    border: 8px solid #e8ddcd;
+    box-shadow: 0 10px 30px rgba(74,62,54,0.15);
+    background: #fdfaf5;
+}
+
+.opening-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.opening-content h4 {
+    letter-spacing: 5px;
+    font-weight: 300;
+}
+
+.opening-content h1 {
+    font-size: 2.8rem;
+    margin: 20px 0;
+}
+
+.opening-content p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+#btn-buka, 
+.opening-content button {
+    margin-top: 30px;
+    padding: 15px 45px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(45deg,#b59063,#e8c691);
+    color: #fdfaf5;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .4s;
+    letter-spacing: 2px;
+    font-size: 14px;
+    box-shadow: 0 5px 20px rgba(181,144,99,0.3);
+}
+
+#btn-buka:hover, 
+.opening-content button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(181,144,99,0.5);
+    background: linear-gradient(45deg,#b59063,#f5e6a3);
+}
+
+#opening-cover.open {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+}
+
+/* ================= HERO (CREAM OVERLAY) ================= */
+.hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(247,237,226,0.65); /* CREAM OVERLAY */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ================= COUNTDOWN ================= */
+.countdown {
+    background: transparent;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.count-box {
+    background: rgba(255,255,255,0.95);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(74,62,54,0.08);
+    width: 120px;
+    border: 1px solid #e8ddcd;
+}
+
+.count-box h3 {
+    font-size: 2.2rem;
+}
+
+.count-box span {
+    color: #8c7a6b;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+/* ================= KUTIPAN QS AR-RUM 21 ================= */
+.quotes {
+    padding: 20px 20px;
+    background: transparent;
+}
+
+.quotes-box {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1.5px solid #b59063;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(74,62,54,0.05);
+}
+
+.quotes-box p {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.quotes-box span {
+    font-weight: 600;
+    font-size: 14px;
+    color: #b59063;
+}
+
+/* ================= COUPLE ================= */
+.couple-container {
+    display: flex;
+    gap: 70px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.amp {
+    font-size: 4rem;
+    color: #e8c691;
+    font-family: 'Great Vibes', cursive;
+    background: none;
+    -webkit-text-fill-color: inherit;
+}
+
+.person {
+    flex: 1;
+    min-width: 280px;
+    background: rgba(255,255,255,0.7); /* Background box halus */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(74,62,54,0.05);
+}
+
+.person h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.person p {
+    margin: 5px 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* FOTO MEMPELAI (BULAT) */
+.person-photo {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid #e8ddcd;
+    box-shadow: 0 10px 20px rgba(74,62,54,0.15);
+    background: #fff;
+}
+
+.person-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ================= STORY ================= */
+.story-section {
+    background: transparent;
+}
+
+.story-section h2 {
+    margin-bottom: 60px;
+}
+
+.story-container {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+}
+
+.story-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(#b59063,transparent);
+    transform: translateX(-50%);
+}
+
+.story-item {
+    width: 50%;
+    padding: 20px 40px;
+    position: relative;
+}
+
+.story-item.left { left: 0; text-align: right; }
+.story-item.right { left: 50%; text-align: left; }
+
+.story-content {
+    background: rgba(255,255,255,0.95);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74,62,54,0.08);
+    transition: .4s;
+    border: 1px solid #e8ddcd;
+}
+
+.story-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(74,62,54,0.12);
+}
+
+.story-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.story-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.story-item::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 15px;
+    height: 15px;
+    background: #e8c691;
+    border-radius: 50%;
+    border: 3px solid #fdfaf5;
+    box-shadow: 0 0 10px #e8c691;
+}
+
+.story-item.left::after { right: -8px; }
+.story-item.right::after { left: -8px; }
+
+/* ================= EVENT ================= */
+.event {
+    background: transparent;
+}
+
+.event-card {
+    background: rgba(255,255,255,0.95);
+    padding: 50px 40px;
+    border-radius: 25px;
+    margin: 30px auto;
+    max-width: 550px;
+    box-shadow: 0 15px 50px rgba(74,62,54,0.1);
+    transition: .4s;
+    border: 1px solid #e8ddcd;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(74,62,54,0.15);
+}
+
+.event-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.event-card p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* ================= GIFT ================= */
+.gift-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 450px;
+    margin: 30px auto 0;
+}
+
+.bank-card {
+    background: rgba(255,255,255,0.95);
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    transition: .4s;
+    border: 1px solid #e8ddcd;
+    box-shadow: 0 10px 25px rgba(74,62,54,0.06);
+}
+
+.bank-card:hover {
+    transform: translateY(-5px);
+}
+
+.bank-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.bank-number {
+    font-size: 1.2rem;
+    color: #4a3e36;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.copy-btn {
+    margin-top: 15px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg,#b59063,#e8c691);
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.copy-btn:hover {
+    background: linear-gradient(45deg,#b59063,#f5e6a3);
+}
+
+/* ================= PARALLAX SECTION ================= */
+.parallax-section {
+    position: relative;
+    height: 60vh;
+    background: url('bg-wedding.jpg') center/cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallax-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(247,237,226,0.65);
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* ================= CLOSING MESSAGE ================= */
+.closing-message {
+    padding: 60px 20px 20px;
+    background: transparent;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.closing-message p {
+    font-size: 14.5px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+/* ================= COMMENT SECTION ================= */
+.comment-section {
+    background: transparent;
+    padding-top: 50px;
+}
+
+.comment-box {
+    max-width: 600px;
+    margin-inline: auto;
+    background: rgba(255,255,255,0.8);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74,62,54,0.05);
+}
+
+.comment-box input, 
+.comment-box textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid #e8ddcd;
+    background: #fff;
+    color: #4a3e36;
+    font-family: 'Poppins', sans-serif;
+}
+
+.comment-box input:focus, .comment-box textarea:focus {
+    outline: none;
+    border-color: #e8c691;
+}
+
+.comment-list {
+    margin-top: 40px;
+    text-align: left;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.comment-box button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all .4s ease;
+    background: linear-gradient(45deg,#b59063,#e8c691,#c5a278);
+    color: #fdfaf5;
+    box-shadow: 0 5px 20px rgba(181,144,99,0.3);
+}
+
+.comment-box button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(181,144,99,0.5);
+    background: linear-gradient(45deg,#b59063,#f5e6a3);
+}
+
+/* ================= FOOTER ================= */
+footer {
+    padding: 70px 20px;
+    background: rgba(232,221,205,0.95);
+    text-align: center;
+}
+
+/* ================= MUSIC PLAYER (CREAM) ================= */
+#music-player {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+#music-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(45deg,#b59063,#e8c691);
+    color: #fdfaf5;
+    font-size: 22px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 5px 20px rgba(74,62,54,0.15);
+}
+
+.music-ring {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(181,144,99,0.6);
+    border-radius: 50%;
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: .8; }
+    70% { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ================= RESPONSIVE / MOBILE FIXES ================= */
+@media (max-width: 768px) {
+    section { padding: 70px 20px; }
+    h1 { font-size: 2rem; line-height: 1.3; }
+    h2 { font-size: 1.5rem; margin-bottom: 25px; }
+    p { font-size: 13px; line-height: 1.6; }
+
+    /* Ukuran bunga di HP juga dibuat presisi */
+    .floral-frame-decor { width: 140px; height: 140px; }
+    .floral-top-left { top: 0; left: 0; }
+    .floral-top-right { top: 0; right: 0; }
+    .floral-bottom-left { bottom: 0; left: 0; }
+    .floral-bottom-right { bottom: 0; right: 0; }
+    
+    section::before { display: none; }
+
+    .opening-photo-frame { width: 180px; height: 270px; margin: 20px auto; border-width: 6px; }
+    .opening-content h1 { font-size: 2rem; }
+    .opening-content h4 { font-size: 0.8rem; letter-spacing: 3px; }
+    .opening-content button { padding: 12px 26px; font-size: 13px; }
+
+    .hero { height: 80vh; padding: 20px; }
+    .hero-content h1 { font-size: 1.8rem; }
+    .hero-content h4 { font-size: 12px; letter-spacing: 2px; }
+
+    .countdown-timer { gap: 10px; }
+    .count-box { width: 65px; padding: 15px; border-radius: 12px; }
+    .count-box h3 { font-size: 1.3rem; }
+    .count-box span { font-size: 10px; }
+    
+    .quotes-box { padding: 25px 20px; }
+
+    .couple-container { flex-direction: column; gap: 20px; margin-top: 30px; }
+    .amp { font-size: 2.2rem; }
+    .person h3 { font-size: 1.2rem; }
+    .person-photo { width: 130px; height: 130px; }
+    .person { padding: 20px; }
+
+    .event-card { padding: 30px 20px; margin: 20px auto; }
+    .event-card h3 { font-size: 1.1rem; }
+    .event-card p { font-size: 13px; }
+
+    .story-container::before { left: 15px; }
+    .story-item { width: 100%; padding-left: 45px; padding-right: 10px; text-align: left !important; }
+    .story-item.right { left: 0; }
+    .story-item::after { left: 6px; top: 25px; width: 12px; height: 12px;}
+    .story-content { padding: 20px; }
+    .story-content h3 { font-size: 1.1rem; }
+
+    .bank-card { padding: 20px; }
+    .bank-number { font-size: 1rem; }
+    .bank-card p { font-size: 12px; }
+
+    #music-player { bottom: 15px; right: 15px; }
+    #music-toggle { width: 50px; height: 50px; font-size: 18px; }
+    .music-ring { width: 50px; height: 50px; }
+
+    .parallax-section { height: 40vh; background-attachment: scroll; }
+}
