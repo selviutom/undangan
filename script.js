@@ -7,39 +7,38 @@ document.addEventListener("DOMContentLoaded", function(){
     if(namaTamu){
         const elemenNama = document.getElementById('nama-tamu');
         if(elemenNama){
-            // Mengganti teks HTML dengan nama dari link
             elemenNama.innerText = namaTamu;
         }
     }
-
-    /* ... (kode Anda yang lain seperti btn-buka, music, dll tetap di bawah sini) ... */
 
     /* ================= ELEMENT ================= */
     const btn = document.getElementById("btn-buka");
     const cover = document.getElementById("opening-cover");
     const music = document.getElementById("bg-music");
     const toggle = document.getElementById("music-toggle");
+    const bottomNav = document.getElementById("bottom-navbar");
 
-    /* ================= OPENING & MUSIC ================= */
+    /* ================= OPENING & MUSIC & NAVBAR ================= */
     if(btn){
         btn.addEventListener("click", function(){
-            // MENAMBAHKAN KELAS 'OPEN' UNTUK ANIMASI HILANG KE ATAS
             cover.classList.add("open");
 
-            // MEMULAI MUSIK DENGAN FADE IN
+            if(bottomNav){
+                bottomNav.classList.add("show");
+            }
+
             if(music){
                 music.volume = 0;
                 music.play().catch(()=>{});
 
                 let fade = setInterval(function(){
-                    if(music.volume < 0.5){ // Volume maksimal 0.5
+                    if(music.volume < 0.5){ 
                         music.volume += 0.02;
                     }else{
                         clearInterval(fade);
                     }
-                }, 200); // 0.2 detik per step volume
+                }, 200); 
             }
-
         });
     }
 
@@ -51,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 toggle.textContent = "♫";
             }else{
                 music.pause();
-                toggle.textContent = "✓"; // Tanda pause
+                toggle.textContent = "✓"; 
             }
         });
     }
@@ -92,23 +91,21 @@ document.addEventListener("DOMContentLoaded", function(){
 
             const number = button.parentElement.querySelector(".bank-number").textContent;
 
-            // Navigator clipboard API (modern)
             navigator.clipboard.writeText(number).then(()=>{
                 button.textContent = "✓ Disalin";
                 setTimeout(()=>{ button.textContent = "Salin Nomor"; }, 2000);
             }).catch(()=>{
-                button.textContent = "Gagal!"; // Jika clipboard gagal
+                button.textContent = "Gagal!"; 
             });
 
         });
     });
 
-    /* ================= UCAPAN FORM (REALTIME FIREBASE SUDAH DI HTML) ================= */
-    /* Kode ini dipertahankan hanya jika Anda tidak menggunakan Firebase dan ingin simulasi */
+    /* ================= UCAPAN FORM (SIMULASI JIKA FIREBASE OFF) ================= */
     const formAlternative = document.getElementById("comment-form");
     const listAlternative = document.getElementById("comment-list");
 
-    if(formAlternative && !listAlternative.innerHTML){ // Cek jika bukan Firebase
+    if(formAlternative && !listAlternative.innerHTML){ 
         formAlternative.addEventListener("submit", function(e){
             e.preventDefault();
 
@@ -129,8 +126,7 @@ document.addEventListener("DOMContentLoaded", function(){
         const parallax = document.querySelector(".parallax-section");
         if(parallax){
             let offset = window.pageYOffset;
-            // Geser posisi background vertikal seiring scroll
-            parallax.style.backgroundPositionY = offset * 0.4 + "px"; // 0.4 adalah kecepatannya
+            parallax.style.backgroundPositionY = offset * 0.4 + "px"; 
         }
     });
 
