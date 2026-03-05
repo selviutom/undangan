@@ -53,7 +53,7 @@
             </div>
         </section>
 
-        <section class="countdown">
+        <section class="countdown" id="waktu">
             <h2>Menuju Hari Bahagia</h2>
             <div class="countdown-timer" id="countdown-timer">
                 <div class="count-box"><h3 id="days">0</h3><span>Hari</span></div>
@@ -63,15 +63,7 @@
             </div>
         </section>
 
-        <section class="quotes" data-aos="fade-up">
-            <div class="quotes-box">
-                <p>"Dan di antara tanda-tanda kekuasaan-Nya diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu dapat ketenangan hati dan dijadikannya kasih sayang di antara kamu. Sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berpikir."</p>
-                <br>
-                <span>- QS. Ar-Rum 21 -</span>
-            </div>
-        </section>
-
-        <section class="couple" data-aos="fade-up">
+        <section class="couple" id="mempelai" data-aos="fade-up">
             <h2>Mempelai</h2>
             <div class="couple-container">
 
@@ -99,7 +91,7 @@
             </div>
         </section>
 
-        <section class="story-section" data-aos="fade-up">
+        <section class="story-section" id="kisah" data-aos="fade-up">
             <h2>Asmaraloka</h2>
 
             <div class="story-container">
@@ -149,7 +141,7 @@
             </div>
         </section>
 
-        <section class="event">
+        <section class="event" id="acara">
             <h2>Detail Acara</h2>
 
             <div class="event-card">
@@ -163,7 +155,7 @@
             </div>
         </section>
 
-        <section class="gift">
+        <section class="gift" id="hadiah">
             <h2>Wedding Gift</h2>
 
             <div class="gift-container">
@@ -191,12 +183,7 @@
             </div>
         </section>
 
-        <section class="closing-message" data-aos="fade-up">
-            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.</p>
-            <p>Atas kehadiran serta doa restunya,<br>kami ucapkan <strong>terima kasih</strong>.</p>
-        </section>
-
-        <section class="comment-section">
+        <section class="comment-section" id="ucapan">
             <h2>Ucapan & Doa</h2>
 
             <form id="comment-form" class="comment-box">
@@ -211,10 +198,33 @@
         <footer>
             <h3>Selviyani & Utom</h3>
             <p>Terima kasih atas doa & restunya</p>
+            <br><br><br>
         </footer>
 
     </main>
 
+    <nav id="bottom-navbar">
+        <a href="#waktu" class="nav-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/></svg>
+            <span>Waktu</span>
+        </a>
+        <a href="#mempelai" class="nav-item">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>Mempelai</span>
+        </a>
+        <a href="#kisah" class="nav-item">
+            <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.1C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zM11 18.1c-1.1-.5-2.85-.9-4.5-.9-1.3 0-2.75.2-4 .6V7.4c1.1-.35 2.5-.5 4-.5 1.65 0 3.4.4 4.5.9v10.3zm10 .6c-1.25-.4-2.7-.6-4-.6-1.65 0-3.4.4-4.5.9V7.4c1.1-.5 2.85-.9 4.5-.9 1.5 0 2.9.15 4 .5v11.1z"/></svg>
+            <span>Kisah</span>
+        </a>
+        <a href="#acara" class="nav-item">
+            <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+            <span>Acara</span>
+        </a>
+        <a href="#ucapan" class="nav-item">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h10v2H7zm0-3h10v2H7zm0 6h7v2H7z"/></svg>
+            <span>Ucapan</span>
+        </a>
+    </nav>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>AOS.init({duration:1200,once:true});</script>
     <script src="script.js"></script>
