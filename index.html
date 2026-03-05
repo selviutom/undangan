@@ -5,11 +5,12 @@
     <title>Undangan Pernikahan - Selviyani & Utom</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" as="image" href="foto-couple.png">
+    <link rel="preload" as="image" href="https://www.transparenttextures.com/patterns/roses.png">
 
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -28,7 +29,7 @@
             <h4>THE WEDDING OF</h4>
             
             <div class="opening-photo-frame">
-                <img src="foto-couple.png" alt="Selviyani & Utom" class="opening-photo">
+                <img src="foto-couple.png" alt="Selviyani & Utom" class="opening-photo" fetchpriority="high">
             </div>
 
             <h1>Selviyani Amelia & Muhammad Utom</h1>
@@ -69,7 +70,7 @@
 
                 <div class="person">
                     <div class="person-photo">
-                        <img src="foto-selvi.png" alt="Selviyani">
+                        <img src="foto-selvi.png" alt="Selviyani" loading="lazy">
                     </div>
                     <h3>Selviyani Amelia</h3>
                     <p>Putri Pertama dari</p>
@@ -80,7 +81,7 @@
 
                 <div class="person">
                     <div class="person-photo">
-                        <img src="foto-utom.png" alt="Utom">
+                        <img src="foto-utom.png" alt="Utom" loading="lazy">
                     </div>
                     <h3>Muhammad Utom</h3>
                     <p>Putra Kedua dari</p>
@@ -241,7 +242,6 @@
             onSnapshot
         } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
-        // GANTI INI DENGAN KONFIGURASI FIREBASE ANDA
         const firebaseConfig = {
             apiKey: "AIzaSyBo30suARbe1AoYiCKA7lZHvBELDIzqZJE",
             authDomain: "undangan-selvi-utom.firebaseapp.com",
@@ -255,7 +255,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // SIMPAN UCAPAN
         const form = document.getElementById("comment-form");
 
         form.addEventListener("submit", async (e) => {
@@ -275,9 +274,7 @@
             form.reset();
         });
 
-        // TAMPILKAN UCAPAN REALTIME
         const list = document.getElementById("comment-list");
-
         const q = query(collection(db, "ucapan"), orderBy("waktu", "desc"));
 
         onSnapshot(q, (snapshot) => {
