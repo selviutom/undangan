@@ -38,7 +38,7 @@ h4 {
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;
-    z-index: 9000; /* DITURUNKAN agar Taskbar & Musik berada di atasnya */
+    z-index: 9000; 
 }
 
 .floral-top-left {
@@ -83,7 +83,7 @@ section::before { display: none; }
 #opening-cover {
     position: fixed;
     inset: 0;
-    z-index: 10000; /* PALING ATAS */
+    z-index: 10000; 
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -183,6 +183,44 @@ section::before { display: none; }
 }
 .count-box h3 { font-size: 2.2rem; }
 .count-box span { color: #8c7a6b; font-size: 13px; font-weight: 300; }
+
+/* ================= QUOTE & CLOSING TEXTS ================= */
+.quote-section, .closing-section {
+    background: transparent;
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quote-container, .closing-container {
+    background: rgba(255,255,255,0.85);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(74,62,54,0.05);
+    border: 1px solid #e8ddcd;
+    text-align: center;
+}
+
+.quote-container p {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #6a5a4d;
+}
+
+.quote-container h4 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.closing-container p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #4a3e36;
+}
 
 /* ================= COUPLE ================= */
 .couple-container { display: flex; gap: 70px; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 50px; }
@@ -331,7 +369,7 @@ footer { padding: 70px 20px; background: rgba(232,221,205,0.95); text-align: cen
     position: fixed;
     bottom: 85px; 
     right: 25px;
-    z-index: 9999; /* LEBIH TINGGI DARI BUNGA DAN NAVBAR */
+    z-index: 9999; 
 }
 
 #music-toggle {
@@ -375,7 +413,7 @@ footer { padding: 70px 20px; background: rgba(232,221,205,0.95); text-align: cen
     display: flex;
     justify-content: space-around;
     padding: 10px 5px;
-    z-index: 9998; /* LEBIH TINGGI DARI BUNGA (9000) */
+    z-index: 9998; 
     transform: translateY(100%); 
     transition: transform 0.8s cubic-bezier(.77,0,.18,1);
     border-top: 1px solid #e8ddcd;
@@ -427,6 +465,11 @@ footer { padding: 70px 20px; background: rgba(232,221,205,0.95); text-align: cen
     .count-box { width: 65px; padding: 15px; border-radius: 12px; }
     .count-box h3 { font-size: 1.3rem; }
     .count-box span { font-size: 10px; }
+
+    /* Pengaturan Tambahan Untuk Mobile Quote/Closing */
+    .quote-section, .closing-section { padding: 40px 20px; }
+    .quote-container, .closing-container { padding: 25px 20px; }
+    .quote-container p, .closing-container p { font-size: 12px; }
 
     .couple-container { flex-direction: column; gap: 20px; margin-top: 30px; }
     .amp { font-size: 2.2rem; }
