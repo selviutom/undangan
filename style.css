@@ -280,6 +280,30 @@ section::before { display: none; }
 .event-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
 .event-card p { font-size: 14px; margin: 5px 0; }
 
+/* ================= CSS GOOGLE MAPS ================= */
+.map-container {
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+}
+.btn-map {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: linear-gradient(45deg,#b59063,#e8c691);
+    color: #fdfaf5;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: .3s;
+    box-shadow: 0 5px 15px rgba(181,144,99,0.3);
+}
+.btn-map:hover {
+    background: linear-gradient(45deg,#b59063,#f5e6a3);
+    transform: translateY(-3px);
+}
+
 /* ================= GIFT ================= */
 .gift-container { display: flex; flex-direction: column; gap: 30px; max-width: 450px; margin: 30px auto 0; }
 .bank-card {
@@ -466,7 +490,6 @@ footer { padding: 70px 20px; background: rgba(232,221,205,0.95); text-align: cen
     .count-box h3 { font-size: 1.3rem; }
     .count-box span { font-size: 10px; }
 
-    /* Pengaturan Tambahan Untuk Mobile Quote/Closing */
     .quote-section, .closing-section { padding: 40px 20px; }
     .quote-container, .closing-container { padding: 25px 20px; }
     .quote-container p, .closing-container p { font-size: 12px; }
